@@ -1,8 +1,8 @@
-Expense Tracker
+#Expense Tracker
 
 Track your daily expenses and visualize spending by category.
 
-Features
+###Features
 
 Store daily expenses in a CSV file
 
@@ -13,6 +13,6 @@ Visualize expenses with bar charts
  Run the Project
 python expense_tracker.py
 
-Tech
+###Tech
 
 Python · pandas · matplotlib
