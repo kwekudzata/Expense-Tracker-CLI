@@ -1,4 +1,4 @@
-import numpy
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib import style
@@ -50,20 +50,24 @@ def visualize_expenses():
 
     style.use('ggplot')
 
+    # Create a figure with two subplots
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+
     # Plot bar chart
-    plt.figure(figsize=(4, 5))
-    plt.bar(summary.index, summary.values)
+    ax1.bar(summary.index, summary.values, color='steelblue')
+    ax1.set_title("Expense Summary by Category")
+    ax1.set_xlabel("Category")
+    ax1.set_ylabel("Total Spent (Ghc)")
+    ax1.tick_params(axis='x', rotation=30)
+    ax1.grid(True, alpha=0.3)
 
-    # Add labels and title
-    plt.title("Expense Summary by Category")
-    plt.xlabel("Category")
-    plt.ylabel("Total Spent (Ghc)")
+    # Plot pie chart
+    colors = plt.cm.Set3(np.linspace(0, 1, len(summary)))
+    ax2.pie(summary.values, labels=summary.index, autopct='%1.1f%%', 
+            colors=colors, startangle=90)
+    ax2.set_title("Expense Distribution by Category")
 
-    # Rotate category labels for readability
-    plt.xticks(rotation=30)
-
-    # Display grid and chart
-    plt.grid(True)
+    # Adjust layout and display
     plt.tight_layout()
     plt.show()
 
